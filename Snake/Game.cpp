@@ -11,7 +11,7 @@ Game::Game(Terminal& term) :
 {
     _walls = {
         Wall(Vec2D(0, 0), Vec2D(0, _term.height()-1)),      //linker rand
-        //meins
+        // Aufgabe 1
         Wall(Vec2D(0, 0), Vec2D(term.width()-1, 0)),         //oberer rand
         Wall(Vec2D(term.width()-1, 0), Vec2D(term.width() - 1, term.height()-1)),       //rechter rand
         Wall(Vec2D(0, term.height()-1), Vec2D(term.width() - 1, term.height()-1))       //unterer rand
@@ -38,6 +38,7 @@ void Game::update(float dt)
             break;
 
         default:
+            // Aufgabe 3
             _snake.change_direction(pressed);
             break;
     }

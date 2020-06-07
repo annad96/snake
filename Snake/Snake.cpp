@@ -72,7 +72,7 @@ void Snake::change_direction(char key)
 
 void Snake::draw(Terminal& term)
 {
-    //meins
+    // Aufgabe 2
     //Kopf
     term.set_cell(_segments[0].x, _segments[0].y, 's');
     //Körper
@@ -104,6 +104,7 @@ bool Snake::collides_with(const std::vector<Wall>& walls) const
     }
 
 	// check for wall collisions
+    // Aufgabe 4
     for (unsigned int i = 0; i < walls.size(); i++) {
         if (walls[i].collides_with(*this)) {
             return true;
