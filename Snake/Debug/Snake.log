@@ -1,0 +1,6 @@
+﻿  Snake.cpp
+C:\Users\annad\Desktop\SnakeOopTemplate\Snake\Snake.cpp(79,23): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\annad\Desktop\SnakeOopTemplate\Snake\Snake.cpp(107,23): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\annad\Desktop\SnakeOopTemplate\Snake\Snake.cpp(108,12): warning C4805: "==": unsichere Kombination von Typ "int" mit Typ "bool" in einer Operation
+C:\Users\annad\Desktop\SnakeOopTemplate\Snake\Snake.cpp(108,95): warning C4805: "==": unsichere Kombination von Typ "int" mit Typ "bool" in einer Operation
+  Snake.vcxproj -> C:\Users\annad\Desktop\SnakeOopTemplate\Debug\Snake.exe
