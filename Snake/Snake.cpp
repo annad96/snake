@@ -3,13 +3,13 @@
 #include "Terminal.h"
 #include "Food.h"
 
-Snake::Snake() : 
+Snake::Snake() :
     _dir(MoveDirection::RIGHT)
 {
     _segments = { {9, 5}, {8, 5}, {7, 5}, {6, 5}, {5, 5} };
 }
 
-void Snake::update() 
+void Snake::update()
 {
     Vec2D prev = _segments[0];
     switch (_dir) {
@@ -38,7 +38,7 @@ void Snake::update()
     }
 }
 
-void Snake::change_direction(char key) 
+void Snake::change_direction(char key)
 {
     switch(key) {
         case 'w':
@@ -70,19 +70,19 @@ void Snake::change_direction(char key)
     }
 }
 
-void Snake::draw(Terminal& term) 
+void Snake::draw(Terminal& term)
 {
     //meins
     //Kopf
     term.set_cell(_segments[0].x, _segments[0].y, 's');
     //Körper
-    for (int i = 1; i < _segments.size(); i++)
+    for (unsigned int i = 1; i < _segments.size(); i++)
     {
         term.set_cell(_segments[i].x, _segments[i].y, 'o');
     }
 }
 
-void Snake::grow() 
+void Snake::grow()
 {
     int last = _segments.size() - 1;
     _segments.push_back({ _segments[last].x, _segments[last].y });
@@ -93,7 +93,7 @@ bool Snake::collides_with(const Food& food) const
     return food.collides_with(*this);
 }
 
-bool Snake::collides_with(const std::vector<Wall>& walls) const 
+bool Snake::collides_with(const std::vector<Wall>& walls) const
 {
 	// check for self intersection
     Vec2D head = _segments[0];
@@ -104,15 +104,15 @@ bool Snake::collides_with(const std::vector<Wall>& walls) const
     }
 
 	// check for wall collisions
-    for (int i = 0; i < walls.size(); i++) {
-        if (head.x == walls[i].collides_with(*this) && head.y == walls[i].collides_with(*this)) {     //meins
+    for (unsigned int i = 0; i < walls.size(); i++) {
+        if (walls[i].collides_with(*this)) {
             return true;
         }
     }
     return false;
 }
 
-Vec2D Snake::get_head_segment() const 
+Vec2D Snake::get_head_segment() const
 {
     return _segments[0];
 }

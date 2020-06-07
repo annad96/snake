@@ -3,10 +3,10 @@
 
 Game::Game(Terminal& term) :
     _elapsed_time(0.f),
-    _score(0), 
+    _score(0),
     _game_over(false),
     _is_done(false),
-    _term(term), 
+    _term(term),
     _food(new_food_position())
 {
     _walls = {
@@ -18,12 +18,12 @@ Game::Game(Terminal& term) :
     };
 }
 
-bool Game::is_done() 
+bool Game::is_done()
 {
     return _is_done;
 }
 
-void Game::update(float dt) 
+void Game::update(float dt)
 {
     char pressed = _term.get_key();
     switch (pressed) {
@@ -38,15 +38,15 @@ void Game::update(float dt)
             break;
 
         default:
+            _snake.change_direction(pressed);
             break;
     }
 
     _elapsed_time += dt;
-    if (_elapsed_time >= 0.1f) 
+    if (_elapsed_time >= 0.1f)
     {
         if (!_game_over) {
             _snake.update();
-            _snake.change_direction(_term.get_key());       //meins
             if (_snake.collides_with(_food)) {
                 _snake.grow();
                 _food = Food(new_food_position());
@@ -78,7 +78,7 @@ void Game::draw()
     _term.sleep(1);
 }
 
-void Game::draw_game_over() 
+void Game::draw_game_over()
 {
     std::string score_text = "Game Over! You got '" + std::to_string(_score) + "' points.";
     std::string reset_text = "Press 'r' to restart.";
